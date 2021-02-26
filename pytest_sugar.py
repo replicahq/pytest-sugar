@@ -307,7 +307,8 @@ class SugarTerminalReporter(TerminalReporter):
                                            last_theme,
                                            on_color)
 
-                progressbar += colored(bar[block],
+                # Catch occasional IndexError: string index out of range
+                progressbar += colored(bar[block] if len(bar) > block else " ",
                                        theme,
                                        on_color)
                 last = block + 1
